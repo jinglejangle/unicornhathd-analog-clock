@@ -30,7 +30,6 @@ try:
                 self.interval = interval
                 super(ThreadJob,self).__init__()
             except KeyboardInterrupt:
-                print("Stopped")
                 pass
 
         def run(self):
@@ -75,7 +74,6 @@ try:
                     k = ThreadJob(self.pulse,event,self.brightness_delay)
                     k.start()
                 except KeyboardInterrupt:
-                    print("Stopped")
                     pass
                     
  
@@ -133,12 +131,9 @@ try:
 
             # Thin outter ring
             innerdraw.ellipse((4,4,math.floor(self.clockWidth-8),math.floor(self.clockHeight-8)), fill = 'white' , outline='white' )
-            #MOONCLOCK
-            #innerdraw.ellipse((0,0,math.ceil(self.clockWidth-5),math.ceil(self.clockHeight-5)), fill = 'black' , outline=None )
 
             # merge outer and inner rings 
             image.paste(innerimage,(2,2),innerimage)
-            #image.paste(innerimage,(0,0),innerimage)
 
             # center point
             draw.point((int(self.clockWidth/2), int(self.clockHeight/2)), fill="white") 
@@ -151,12 +146,7 @@ try:
             s = int(time.strftime("%s"))
 
 
-            #print("h is hour angle is : " + str(angle)) 
 
-         #   himage = Image.new('RGBA', (7, 7)) 
-         #   hdraw = ImageDraw.Draw(himage) 
-         #   hdraw.rectangle((3,3,5,3), fill=hourcol)
-         #   himage = himage.rotate(-angle+90, PIL.Image.NEAREST, expand=0)
 
         def createHourHand(self): 
 
@@ -164,7 +154,6 @@ try:
             innerdraw = ImageDraw.Draw(innerimage) 
             innerdraw.rectangle( (int(self.clockWidth/2), int(self.clockHeight/2), int(self.clockWidth/1.3), int(self.clockHeight/2)), fill="blue", outline=None) 
 
-            # merge outer and inner rings 
             h = int(time.strftime("%I"))
             m = int(time.strftime("%M"))
             s = int(time.strftime("%s"))
@@ -178,12 +167,6 @@ try:
                 angle +=5
 
             innerimage = innerimage.rotate(angle, PIL.Image.NEAREST, expand=0)
-
-            
-            #reset clock face 
-
-
-            #self.image.paste(innerimage,(0,0),innerimage)
             self.hourhand = innerimage
 
         def createMinHand(self): 
@@ -192,7 +175,6 @@ try:
             innerdraw = ImageDraw.Draw(innerimage) 
             innerdraw.rectangle( (int(self.clockWidth/2), math.ceil(int(self.clockHeight/2)), int(self.clockWidth/1.09), int(self.clockHeight/2)), fill="red", outline=None) 
 
-            # merge outer and inner rings 
             h = int(time.strftime("%I"))
             m = int(time.strftime("%M"))
             s = int(time.strftime("%s"))
@@ -205,10 +187,8 @@ try:
             if m > 45 :
                 angle +=5
 
-
             innerimage = innerimage.rotate(angle, PIL.Image.NEAREST, expand=0)
             self.minhand = innerimage
-
 
 
         def createSecondHand(self): 
@@ -230,7 +210,6 @@ try:
                 angle +=5
 
             innerimage = innerimage.rotate(angle, PIL.Image.NEAREST, expand=0)
-
             self.sechand = innerimage 
 
 
@@ -248,10 +227,6 @@ try:
        
 
         def sendToUnicornHat(self):
-
-
-
-
                 offset_x = 0
                 image = self.image 
                 display_width,display_height = image.size
@@ -264,7 +239,8 @@ try:
                             xr =int(xc[0])
                             xg =int(xc[1])
                             xb =int(xc[2])
-                            
+            
+                            #This strangeness allows me to know the clockface/min/hour/sec hands on the image by color, and then i can apply different pixel effects to each with no regard to what they were before. 
                             if xr == 0  and xg == 0 and xb == 0 :
                                 unicornhathd.set_pixel(x, y, 0, 0, 0)
 
@@ -279,11 +255,6 @@ try:
                             else:
                                 # second hand and all remaining non black or white color   
                                 unicornhathd.set_pixel(x, y, xr, xg, xb)
-
-                            #if(x+1 == display_width and y+1 == display_height): 
-                            #    #only alter the brightness when we loop through the whole image 
-                            #    self.brightness_levels = [self.brightness] + self.brightness_levels
-                            #    self.brightness = self.brightness_levels.pop()
 
                         except IndexError:
                             offset_x = 0
