@@ -13,7 +13,6 @@ import numpy
 import itertools
 
 from PIL import Image, ImageDraw, ImageFont, ImageOps
-#from unicornhathd import UnicornHATMini
 import unicornhathd 
 
 import PIL
