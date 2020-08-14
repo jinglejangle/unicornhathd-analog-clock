@@ -10,7 +10,7 @@ An analog clock for the UnicornHat HD
 	
 # Usage:
 
-	cd ./jinglejangle-unicornhathd-analog-clock/ 
+	cd ./unicornhathd-analog-clock/ 
 	./unicornhd-clock.py 
 
 # Arguments: 
