@@ -23,5 +23,4 @@ An analog clock for the UnicornHat HD
 
 # Bonus 
   UnicornhatMini analog clock, with buttons for modes. 
-  At touch of a button, can displays digital clock, and reads last line of a log file (pihole for example) , or blank the hat. 
-  The codes a mess though, I might refactor it at some point. 
+  At the touch of a button, it can display a scrolling digital rainbow clock, or read last line of a log file (pihole for example) , or blank the hat if you need it dark. 
