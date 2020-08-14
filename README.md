@@ -7,10 +7,10 @@ An analog clock for the UnicornHat HD
 # Installation: 
 
 	git clone https://github.com/jinglejangle/unicornhathd-analog-clock.git
-	cd ./jinglejangle-unicornhathd-analog-clock/ 
 	
 # Usage:
 
+	cd ./jinglejangle-unicornhathd-analog-clock/ 
 	./unicornhd-clock.py 
 
 # Arguments: 
