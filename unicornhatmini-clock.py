@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+""" Analog clock for unicornhatmini """ 
 import time
 import sys
 import subprocess 

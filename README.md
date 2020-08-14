@@ -19,3 +19,9 @@ An analog clock for the UnicornHat HD
 	./unicornhd-clock.py 180
 
 
+
+
+# Bonus 
+  UnicornhatMini analog clock, with buttons for modes. 
+  At touch of a button, can displays digital clock, and reads last line of a log file (pihole for example) , or blank the hat. 
+  The codes a mess though, I might refactor it at some point. 
